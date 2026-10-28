@@ -23,9 +23,9 @@ CFLAGS   := -g -Wall -O2 -ffunction-sections $(ARCH) $(DEFINES)
 CFLAGS   += $(INCLUDE) -D__SWITCH__ `sdl2-config --cflags`
 CXXFLAGS := $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++17
 ASFLAGS  := -g $(ARCH)
-LDFLAGS   = -specs=$(DEVKITPRO)/libnx/switch.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
+LDFLAGS  := -specs=$(DEVKITPRO)/libnx/switch.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 
-LIBS     := `sdl2-config --libs` -lSDL2_ttf `freetype-config --libs 2>/dev/null || echo -lfreetype` -lharfbuzz -lbz2 -lpng16 -lz -lnx
+LIBS     := `sdl2-config --libs` -lSDL2_ttf -lharfbuzz -lfreetype -lbz2 -lpng16 -lz -lnx
 LIBDIRS  := $(PORTLIBS) $(LIBNX)
 
 ifneq ($(BUILD),$(notdir $(CURDIR)))
